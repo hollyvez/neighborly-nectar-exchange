@@ -1,7 +1,8 @@
-import { Handshake, Leaf } from "lucide-react";
+import { Handshake, Leaf, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { JoinForm } from "@/components/JoinForm";
 import { Footer } from "@/components/Footer";
+import { RecentTradesBanner } from "@/components/RecentTradesBanner";
 
 const ExchangeExample = ({ item1, item2 }: { item1: string; item2: string }) => (
   <div className="flex items-center justify-center space-x-4 animate-fade-in">
@@ -14,6 +15,16 @@ const ExchangeExample = ({ item1, item2 }: { item1: string; item2: string }) => 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      {/* Login Icon */}
+      <div className="absolute top-4 right-4 z-10">
+        <Button variant="ghost" size="icon" className="hover:bg-accent-blue/10">
+          <LogIn className="h-6 w-6 text-accent-blue" />
+        </Button>
+      </div>
+
+      {/* Recent Trades Banner */}
+      <RecentTradesBanner />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-accent-blue text-white py-20">
         <div className="container mx-auto text-center px-4">

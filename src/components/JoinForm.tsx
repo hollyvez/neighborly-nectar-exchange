@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { toast } from "sonner";
 
 export const JoinForm = () => {
+  const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,15 +22,21 @@ export const JoinForm = () => {
     e.preventDefault();
     toast.success("Thank you for joining! We'll be in touch soon.");
     setFormData({ name: "", email: "", address: "" });
+    setOpen(false);
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle className="text-2xl font-cursive text-center">Join Your Neighborhood</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button className="w-full max-w-md mx-auto block bg-gradient-to-r from-accent-blue to-accent-purple text-white hover:opacity-90">
+          Join Your Neighborhood
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-cursive text-center">Join Your Neighborhood</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-2">
             <Input
               placeholder="Your Name"
@@ -53,7 +66,7 @@ export const JoinForm = () => {
             Join Now
           </Button>
         </form>
-      </CardContent>
-    </Card>
+      </DialogContent>
+    </Dialog>
   );
 };
