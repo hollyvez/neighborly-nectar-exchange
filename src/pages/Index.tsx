@@ -1,4 +1,4 @@
-import { Handshake, Leaf, Exchange } from "lucide-react";
+import { Handshake, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { JoinForm } from "@/components/JoinForm";
 import { Footer } from "@/components/Footer";
@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 const ExchangeExample = ({ item1, item2 }: { item1: string; item2: string }) => (
   <div className="flex items-center justify-center space-x-4 animate-fade-in">
     <span className="text-lg">{item1}</span>
-    <Exchange className="text-accent-blue animate-pulse" />
+    <Handshake className="text-accent-blue animate-pulse" />
     <span className="text-lg">{item2}</span>
   </div>
 );
@@ -47,7 +47,7 @@ const Index = () => {
               <p>Building stronger communities through meaningful connections</p>
             </div>
             <div className="text-center p-6 hover:scale-105 transition-transform">
-              <Exchange className="w-12 h-12 mx-auto mb-4 text-accent-purple" />
+              <Handshake className="w-12 h-12 mx-auto mb-4 text-accent-purple" />
               <h3 className="text-xl font-bold mb-2">Fair Exchange</h3>
               <p>Promoting equitable and friendly neighborhood bartering</p>
             </div>
