@@ -33,12 +33,7 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Helping neighbors be more neighborly through the power of sharing and exchange
           </p>
-          <Button
-            size="lg"
-            className="bg-accent-green hover:bg-accent-green/90 text-white animate-scale-in"
-          >
-            Join Your Neighborhood
-          </Button>
+          <JoinForm />
         </div>
       </section>
 

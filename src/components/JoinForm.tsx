@@ -28,7 +28,7 @@ export const JoinForm = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="w-full max-w-md mx-auto block bg-gradient-to-r from-accent-blue to-accent-purple text-white hover:opacity-90">
+        <Button className="w-full max-w-md mx-auto block bg-gradient-to-r from-accent-green via-emerald-500 to-teal-500 text-white hover:from-accent-green/90 hover:via-emerald-500/90 hover:to-teal-500/90">
           Join Your Neighborhood
         </Button>
       </DialogTrigger>
@@ -62,7 +62,7 @@ export const JoinForm = () => {
               required
             />
           </div>
-          <Button type="submit" className="w-full bg-gradient-to-r from-accent-blue to-accent-purple text-white hover:opacity-90">
+          <Button type="submit" className="w-full bg-gradient-to-r from-accent-green via-emerald-500 to-teal-500 text-white hover:from-accent-green/90 hover:via-emerald-500/90 hover:to-teal-500/90">
             Join Now
           </Button>
         </form>

@@ -21,13 +21,13 @@ export const RecentTradesBanner = () => {
   const currentTrade = trades[currentTradeIndex];
 
   return (
-    <div className="bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 py-3">
+    <div className="bg-gradient-to-r from-accent-green via-emerald-500 to-teal-500 py-3">
       <div className="container mx-auto flex items-center justify-center space-x-4 animate-fade-in">
-        <span className="text-sm md:text-base">
+        <span className="text-sm md:text-base text-white">
           {currentTrade.trader1} traded {currentTrade.item1}
         </span>
-        <Handshake className="w-4 h-4 text-accent-blue animate-pulse" />
-        <span className="text-sm md:text-base">
+        <Handshake className="w-4 h-4 text-white animate-pulse" />
+        <span className="text-sm md:text-base text-white">
           {currentTrade.trader2} traded {currentTrade.item2}
         </span>
       </div>
