@@ -67,7 +67,7 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-center mb-12">What Can You Exchange?</h2>
           <div className="space-y-6 max-w-2xl mx-auto">
             <ExchangeExample item1="Kids Soccer Cleats" item2="Bike Helmet" />
-            <ExchangeExample item1="Bookcase" item2="Fresh Bread" />
+            <ExchangeExample item1="Bookcase" item2="Paint my Wall" />
             <ExchangeExample item1="Fresh Basil" item2="Garden Plums" />
           </div>
         </div>
