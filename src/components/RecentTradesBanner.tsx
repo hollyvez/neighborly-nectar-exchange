@@ -21,7 +21,7 @@ export const RecentTradesBanner = () => {
   const currentTrade = trades[currentTradeIndex];
 
   return (
-    <div className="bg-gradient-to-r from-accent-green via-emerald-500 to-teal-500 py-3">
+    <div className="bg-gradient-to-r from-[#9b87f5] via-[#7E69AB] to-[#D946EF] py-3">
       <div className="container mx-auto flex items-center justify-center space-x-4 animate-fade-in">
         <span className="text-sm md:text-base text-white">
           {currentTrade.trader1} traded {currentTrade.item1}
