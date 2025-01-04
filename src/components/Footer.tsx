@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ContactModal } from "./ContactModal";
 
 export const Footer = () => {
   return (
@@ -21,16 +22,23 @@ export const Footer = () => {
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2">
               <li><Link to="/about" className="hover:underline">About Us</Link></li>
-              <li><Link to="/contact" className="hover:underline">Contact</Link></li>
+              <li><ContactModal /></li>
               <li><Link to="/faq" className="hover:underline">FAQ</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold mb-4">Connect</h4>
             <ul className="space-y-2">
-              <li><Link to="/blog" className="hover:underline">Blog</Link></li>
-              <li><a href="#" className="hover:underline">Facebook</a></li>
-              <li><a href="#" className="hover:underline">Instagram</a></li>
+              <li>
+                <a 
+                  href="https://www.linkedin.com/company/thenextcommunity" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:underline"
+                >
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
         </div>
