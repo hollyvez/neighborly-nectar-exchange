@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ContactModal } from "./ContactModal";
+import { TermsModal } from "./TermsModal";
 
 export const Footer = () => {
   return (
@@ -13,7 +14,7 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Legal</h4>
             <ul className="space-y-2">
-              <li><Link to="/terms" className="hover:underline">Terms of Service</Link></li>
+              <li><TermsModal /></li>
               <li><Link to="/privacy" className="hover:underline">Privacy Policy</Link></li>
               <li><Link to="/guidelines" className="hover:underline">Community Guidelines</Link></li>
             </ul>
