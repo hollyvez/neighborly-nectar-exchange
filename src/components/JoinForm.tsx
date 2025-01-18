@@ -23,21 +23,22 @@ export const JoinForm = () => {
     e.preventDefault();
     toast.success(
       <div className="space-y-2">
-        <p>We're so excited you're here! Your request to join your neighborhood has been sent.</p>
-        <p>
+        <p className="font-semibold text-lg">We're so excited you're here! Your request to join your neighborhood has been sent.</p>
+        <p className="text-base">
           In the meantime, be sure to check out the{" "}
-          <Link to="/guidelines" className="underline">Guidelines</Link> and{" "}
-          <Link to="/faq" className="underline">FAQs</Link>.
+          <Link to="/guidelines" className="underline font-medium text-accent-blue hover:text-accent-blue/80">Guidelines</Link> and{" "}
+          <Link to="/faq" className="underline font-medium text-accent-blue hover:text-accent-blue/80">FAQs</Link>.
         </p>
-        <p>
+        <p className="text-base">
           Are you interested in becoming a neighborhood champion?{" "}
-          <a href="mailto:support@thenext.community" className="underline">
+          <a href="mailto:support@thenext.community" className="underline font-medium text-accent-blue hover:text-accent-blue/80">
             Contact support@thenext.community
           </a>
         </p>
       </div>,
       {
-        duration: 10000,
+        duration: 15000,
+        className: "bg-white border-2 border-accent-blue/20 shadow-lg",
       }
     );
     setFormData({ name: "", email: "", address: "" });
