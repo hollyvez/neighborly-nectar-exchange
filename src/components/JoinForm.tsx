@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 export const JoinForm = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,25 @@ export const JoinForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you for joining! We'll be in touch soon.");
+    toast.success(
+      <div className="space-y-2">
+        <p>We're so excited you're here! Your request to join your neighborhood has been sent.</p>
+        <p>
+          In the meantime, be sure to check out the{" "}
+          <Link to="/guidelines" className="underline">Guidelines</Link> and{" "}
+          <Link to="/faq" className="underline">FAQs</Link>.
+        </p>
+        <p>
+          Are you interested in becoming a neighborhood champion?{" "}
+          <a href="mailto:support@thenext.community" className="underline">
+            Contact support@thenext.community
+          </a>
+        </p>
+      </div>,
+      {
+        duration: 10000,
+      }
+    );
     setFormData({ name: "", email: "", address: "" });
     setOpen(false);
   };
