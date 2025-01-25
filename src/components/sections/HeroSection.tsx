@@ -3,6 +3,10 @@ import { Button } from "@/components/ui/button";
 import { JoinForm } from "@/components/JoinForm";
 
 export const HeroSection = () => {
+  const handleSuccess = () => {
+    // Optional: Add any success handling logic here
+  };
+
   return (
     <section className="bg-gradient-to-r from-primary to-accent-blue text-white py-20">
       <div className="container mx-auto text-center px-4">
@@ -11,7 +15,7 @@ export const HeroSection = () => {
         <p className="text-xl mb-8 max-w-2xl mx-auto">
           Helping neighbors be more neighborly through the power of sharing and exchange
         </p>
-        <JoinForm />
+        <JoinForm onSuccess={handleSuccess} />
       </div>
     </section>
   );

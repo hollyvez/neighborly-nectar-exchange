@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { Link } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -30,23 +29,25 @@ export const useJoinForm = (onSuccess: () => void) => {
     setIsSubmitting(true);
 
     try {
+      const submitData = {
+        name: formData.name,
+        email: formData.email,
+        address: `${formData.streetAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`
+      };
+
       // Submit to Supabase
       const { error } = await supabase
         .from('join_requests')
-        .insert([{
-          name: formData.name,
-          email: formData.email,
-          address: `${formData.streetAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`
-        }]);
+        .insert([submitData]);
 
       if (error) throw error;
 
       // Submit to Netlify forms
-      const formData = new FormData(e.currentTarget);
+      const netlifyFormData = new FormData(e.currentTarget);
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams(netlifyFormData as any).toString(),
       });
 
       if (!response.ok) {
