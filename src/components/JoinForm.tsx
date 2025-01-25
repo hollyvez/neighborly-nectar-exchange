@@ -18,7 +18,10 @@ export const JoinForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    address: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    zipCode: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,7 +31,11 @@ export const JoinForm = () => {
     try {
       const { error } = await supabase
         .from('join_requests')
-        .insert([formData]);
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          address: `${formData.streetAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`
+        }]);
 
       if (error) throw error;
 
@@ -52,7 +59,7 @@ export const JoinForm = () => {
           className: "bg-white border-2 border-accent-blue/20 shadow-lg",
         }
       );
-      setFormData({ name: "", email: "", address: "" });
+      setFormData({ name: "", email: "", streetAddress: "", city: "", state: "", zipCode: "" });
       setOpen(false);
     } catch (error) {
       console.error('Error submitting join request:', error);
@@ -93,10 +100,34 @@ export const JoinForm = () => {
           </div>
           <div className="space-y-2">
             <Input
-              placeholder="Home Address"
-              value={formData.address}
-              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+              placeholder="Street Address"
+              value={formData.streetAddress}
+              onChange={(e) => setFormData({ ...formData, streetAddress: e.target.value })}
               required
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <Input
+              placeholder="City"
+              value={formData.city}
+              onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+              required
+            />
+            <Input
+              placeholder="State"
+              value={formData.state}
+              onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Input
+              placeholder="ZIP Code"
+              value={formData.zipCode}
+              onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
+              required
+              pattern="[0-9]{5}"
+              title="Please enter a valid 5-digit ZIP code"
             />
           </div>
           <Button 

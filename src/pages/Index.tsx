@@ -1,5 +1,3 @@
-import { LogIn } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { JoinForm } from "@/components/JoinForm";
 import { Footer } from "@/components/Footer";
 import { RecentTradesBanner } from "@/components/RecentTradesBanner";
@@ -12,13 +10,8 @@ import { KPISection } from "@/components/sections/KPISection";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      {/* Login Icon */}
-      <div className="absolute top-4 right-4 z-10">
-        <Button variant="ghost" size="icon" className="hover:bg-accent-blue/10">
-          <LogIn className="h-6 w-6 text-accent-blue" />
-        </Button>
-      </div>
-
+      {/* Login button removed until app is ready for release */}
+      
       {/* Recent Trades Banner */}
       <RecentTradesBanner />
 
