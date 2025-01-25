@@ -25,11 +25,12 @@ export const useJoinForm = (onSuccess: () => void) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      // Submit to Supabase
       const { error } = await supabase
         .from('join_requests')
         .insert([{
@@ -40,26 +41,19 @@ export const useJoinForm = (onSuccess: () => void) => {
 
       if (error) throw error;
 
-      toast.success(
-        <div className="space-y-2">
-          <p className="font-semibold text-lg">We're so excited you're here! Your request to join your neighborhood has been sent.</p>
-          <p className="text-base">
-            In the meantime, be sure to check out the{" "}
-            <Link to="/guidelines" className="underline font-medium text-accent-blue hover:text-accent-blue/80">Guidelines</Link> and{" "}
-            <Link to="/faq" className="underline font-medium text-accent-blue hover:text-accent-blue/80">FAQs</Link>.
-          </p>
-          <p className="text-base">
-            Are you interested in becoming a neighborhood champion?{" "}
-            <a href="mailto:support@thenext.community" className="underline font-medium text-accent-blue hover:text-accent-blue/80">
-              Contact support@thenext.community
-            </a>
-          </p>
-        </div>,
-        {
-          duration: 15000,
-          className: "bg-white border-2 border-accent-blue/20 shadow-lg",
-        }
-      );
+      // Submit to Netlify forms
+      const formData = new FormData(e.currentTarget);
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form to Netlify');
+      }
+
+      toast.success("Thank you for your interest! We'll be in touch soon.");
       setFormData(initialFormData);
       onSuccess();
     } catch (error) {

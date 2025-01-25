@@ -1,4 +1,1 @@
 project_id = "uqitlinmytegetngvzkd"
-
-[functions.notify-signup]
-verify_jwt = false
