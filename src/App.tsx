@@ -10,9 +10,9 @@ import FAQ from "./pages/FAQ";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter basename="/">
-      <TooltipProvider>
+  <TooltipProvider>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/guidelines" element={<Guidelines />} />
@@ -21,9 +21,9 @@ const App = () => (
         </Routes>
         <Toaster />
         <Sonner />
-      </TooltipProvider>
-    </BrowserRouter>
-  </QueryClientProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </TooltipProvider>
 );
 
 export default App;
