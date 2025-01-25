@@ -8,21 +8,23 @@ import { ExchangeExamplesSection } from "@/components/sections/ExchangeExamplesS
 import { KPISection } from "@/components/sections/KPISection";
 
 const Index = () => {
-  const handleSuccess = () => {
-    // Optional: Add any success handling logic here
-  };
-
   return (
     <div className="min-h-screen">
+      {/* Login button removed until app is ready for release */}
+      
+      {/* Recent Trades Banner */}
       <RecentTradesBanner />
+
+      {/* Main Sections */}
       <HeroSection />
       <ValuesSection />
       <HowItWorksSection />
       <ExchangeExamplesSection />
 
+      {/* Join Form Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <JoinForm onSuccess={handleSuccess} />
+          <JoinForm />
         </div>
       </section>
 

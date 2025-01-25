@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -24,37 +25,41 @@ export const useJoinForm = (onSuccess: () => void) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const submitData = {
-        name: formData.name,
-        email: formData.email,
-        address: `${formData.streetAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`
-      };
-
-      // Submit to Supabase
       const { error } = await supabase
         .from('join_requests')
-        .insert([submitData]);
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          address: `${formData.streetAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`
+        }]);
 
       if (error) throw error;
 
-      // Submit to Netlify forms
-      const netlifyFormData = new FormData(e.currentTarget);
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(netlifyFormData as any).toString(),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form to Netlify');
-      }
-
-      toast.success("Thank you for your interest! We'll be in touch soon.");
+      toast.success(
+        <div className="space-y-2">
+          <p className="font-semibold text-lg">We're so excited you're here! Your request to join your neighborhood has been sent.</p>
+          <p className="text-base">
+            In the meantime, be sure to check out the{" "}
+            <Link to="/guidelines" className="underline font-medium text-accent-blue hover:text-accent-blue/80">Guidelines</Link> and{" "}
+            <Link to="/faq" className="underline font-medium text-accent-blue hover:text-accent-blue/80">FAQs</Link>.
+          </p>
+          <p className="text-base">
+            Are you interested in becoming a neighborhood champion?{" "}
+            <a href="mailto:support@thenext.community" className="underline font-medium text-accent-blue hover:text-accent-blue/80">
+              Contact support@thenext.community
+            </a>
+          </p>
+        </div>,
+        {
+          duration: 15000,
+          className: "bg-white border-2 border-accent-blue/20 shadow-lg",
+        }
+      );
       setFormData(initialFormData);
       onSuccess();
     } catch (error) {

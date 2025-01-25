@@ -1,62 +1,65 @@
-import React from "react";
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { AddressFields } from "./form/AddressFields";
 import { useJoinForm } from "@/hooks/useJoinForm";
-import { AddressFields } from "@/components/form/AddressFields";
-import { Input } from "@/components/ui/input";
 
-export const JoinForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
-  const { formData, isSubmitting, handleSubmit, handleFieldChange } = useJoinForm(onSuccess);
+export const JoinForm = () => {
+  const [open, setOpen] = useState(false);
+  const { formData, isSubmitting, handleSubmit, handleFieldChange } = useJoinForm(() => setOpen(false));
 
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      className="space-y-6"
-      data-netlify="true"
-      name="join-request"
-      method="POST"
-    >
-      <input type="hidden" name="form-name" value="join-request" />
-      
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name
-          </label>
-          <Input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={formData.name}
-            onChange={(e) => handleFieldChange("name", e.target.value)}
-            className="mt-1"
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button className="w-full max-w-md mx-auto block bg-gradient-to-r from-accent-green via-emerald-500 to-teal-500 text-white hover:from-accent-green/90 hover:via-emerald-500/90 hover:to-teal-500/90">
+          Join Your Neighborhood
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-cursive text-center">Join Your Neighborhood</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="space-y-2">
+            <Input
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={(e) => handleFieldChange("name", e.target.value)}
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Input
+              type="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={(e) => handleFieldChange("email", e.target.value)}
+              required
+            />
+          </div>
+          <AddressFields
+            streetAddress={formData.streetAddress}
+            city={formData.city}
+            state={formData.state}
+            zipCode={formData.zipCode}
+            onChange={handleFieldChange}
           />
-        </div>
-
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
-          </label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={formData.email}
-            onChange={(e) => handleFieldChange("email", e.target.value)}
-            className="mt-1"
-          />
-        </div>
-
-        <AddressFields formData={formData} onFieldChange={handleFieldChange} />
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-      >
-        {isSubmitting ? "Submitting..." : "Join Your Neighborhood"}
-      </button>
-    </form>
+          <Button 
+            type="submit" 
+            className="w-full bg-gradient-to-r from-accent-green via-emerald-500 to-teal-500 text-white hover:from-accent-green/90 hover:via-emerald-500/90 hover:to-teal-500/90"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Join Now"}
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
