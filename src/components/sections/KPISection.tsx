@@ -1,13 +1,13 @@
 const KPICard = ({ value, label }: { value: string; label: string }) => (
-  <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:scale-105 transition-transform">
-    <div className="text-3xl font-bold text-accent-blue mb-2">{value}</div>
-    <div className="text-sm text-gray-600">{label}</div>
+  <div className="text-center p-6 bg-card rounded-xl shadow-elegant hover-glow transition-smooth">
+    <div className="text-3xl font-bold text-primary mb-2">{value}</div>
+    <div className="text-sm text-muted-foreground">{label}</div>
   </div>
 );
 
 export const KPISection = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-secondary to-white">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
           <KPICard value="308" label="Connections Made" />
