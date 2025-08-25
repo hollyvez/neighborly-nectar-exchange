@@ -34,7 +34,7 @@ const FAQ = () => {
               <GettingStarted />
               <EnvironmentalImpact />
               
-              <div className="bg-blue-50 rounded-lg p-6">
+              <div className="bg-card/50 border rounded-lg p-6">
                 <h2 className="text-2xl font-semibold mb-4">Still Have Questions?</h2>
                 <p>
                   We're here to help! Contact us at{" "}
