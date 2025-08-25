@@ -29,7 +29,7 @@ const Guidelines = () => {
               <h2 className="text-3xl font-bold mb-6">Our Community Values 💝</h2>
               
               <div className="grid gap-8">
-                <div className="bg-green-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Caring for Our Planet</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Every trade helps reduce waste and environmental impact</li>
@@ -39,7 +39,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-yellow-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Everyone Has Something to Share</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Whether it's homegrown tomatoes, handyman skills, or simply time to help a neighbor, your contributions matter</li>
@@ -48,7 +48,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Building Real Connections</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>This isn't just about trading – it's about getting to know the wonderful people in your neighborhood</li>
@@ -63,7 +63,7 @@ const Guidelines = () => {
               <h2 className="text-3xl font-bold mb-6">Being a Great Neighbor 🌟</h2>
               
               <div className="grid gap-8">
-                <div className="bg-purple-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Keep It Positive</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Use friendly, respectful language in all communications</li>
@@ -73,7 +73,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-orange-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Be Reliable</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Follow through on your commitments</li>
@@ -83,7 +83,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-red-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Stay Safe</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Meet in public places when possible</li>
@@ -100,7 +100,7 @@ const Guidelines = () => {
               <h2 className="text-3xl font-bold mb-6">Trading Guidelines 🤝</h2>
               
               <div className="grid gap-8">
-                <div className="bg-teal-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Before the Trade</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Be clear about what you're offering or seeking</li>
@@ -110,7 +110,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-cyan-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">During the Trade</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Meet at the agreed time and place</li>
@@ -120,7 +120,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-indigo-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">After the Trade</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Thank your trading partner</li>
@@ -134,7 +134,7 @@ const Guidelines = () => {
 
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6">What to Avoid ⚠️</h2>
-              <div className="bg-rose-50 rounded-lg p-6">
+              <div className="bg-card/50 border rounded-lg p-6">
                 <p className="mb-4">Let's keep our community safe and friendly by avoiding:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Harassment or unkind behavior</li>
@@ -152,7 +152,7 @@ const Guidelines = () => {
               <h2 className="text-3xl font-bold mb-6">Problem Solving 💡</h2>
               
               <div className="grid gap-8">
-                <div className="bg-amber-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">If Something Goes Wrong</h3>
                   <ol className="list-decimal pl-6 space-y-2">
                     <li>Start with friendly communication</li>
@@ -163,7 +163,7 @@ const Guidelines = () => {
                   </ol>
                 </div>
 
-                <div className="bg-lime-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Tips for Positive Resolution</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Stay calm and kind</li>
@@ -180,7 +180,7 @@ const Guidelines = () => {
               <h2 className="text-3xl font-bold mb-6">Growing Our Community 🌱</h2>
               
               <div className="grid gap-8">
-                <div className="bg-emerald-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Ways to Contribute</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Welcome new members</li>
@@ -191,7 +191,7 @@ const Guidelines = () => {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6">
+                <div className="bg-card/50 border rounded-lg p-6">
                   <h3 className="text-xl font-semibold mb-4">Recognition and Growth</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Build your reputation through reliable, friendly trades</li>
@@ -205,7 +205,7 @@ const Guidelines = () => {
 
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6">Getting Help 🆘</h2>
-              <div className="bg-fuchsia-50 rounded-lg p-6">
+              <div className="bg-card/50 border rounded-lg p-6">
                 <p className="mb-4">We're here to support you! Contact us if you:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Have questions about trading</li>
@@ -220,7 +220,7 @@ const Guidelines = () => {
 
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6">Final Thoughts 💭</h2>
-              <div className="bg-violet-50 rounded-lg p-6">
+              <div className="bg-card/50 border rounded-lg p-6">
                 <p className="mb-4">Remember, every trade is an opportunity to:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Make a new friend</li>

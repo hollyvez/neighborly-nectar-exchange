@@ -1,6 +1,6 @@
 export const TradingAndTokens = () => {
   return (
-    <section className="bg-green-50 rounded-lg p-6">
+    <section className="bg-card/50 border rounded-lg p-6">
       <h2 className="text-3xl font-bold mb-6">Trading & Tokens</h2>
       
       <div className="space-y-6">

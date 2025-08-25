@@ -1,6 +1,6 @@
 export const ProblemSolving = () => {
   return (
-    <section className="bg-yellow-50 rounded-lg p-6">
+    <section className="bg-card/50 border rounded-lg p-6">
       <h2 className="text-3xl font-bold mb-6">Problem Solving</h2>
       
       <div className="space-y-6">
