@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { SeedBlogPosts } from "@/components/blog/SeedBlogPosts";
 interface BlogPost {
   id: string;
   slug: string;
@@ -105,6 +106,7 @@ const Blog = () => {
         </section>
 
         <Footer />
+        <SeedBlogPosts />
       </div>
     </>;
 };
