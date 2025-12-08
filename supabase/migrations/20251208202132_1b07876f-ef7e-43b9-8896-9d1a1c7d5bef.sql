@@ -1,0 +1,1 @@
+UPDATE blog_posts SET author = 'TheNExT Team' WHERE author = 'TheNEXT Team';
