@@ -1332,7 +1332,38 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      invite_token_validation: {
+        Row: {
+          expires_at: string | null
+          id: string | null
+          invite_token: string | null
+          neighborhood_id: string | null
+          status: string | null
+        }
+        Insert: {
+          expires_at?: string | null
+          id?: string | null
+          invite_token?: string | null
+          neighborhood_id?: string | null
+          status?: string | null
+        }
+        Update: {
+          expires_at?: string | null
+          id?: string | null
+          invite_token?: string | null
+          neighborhood_id?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invites_neighborhood_id_fkey"
+            columns: ["neighborhood_id"]
+            isOneToOne: false
+            referencedRelation: "neighborhood_info"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       admin_issue_tokens: {
