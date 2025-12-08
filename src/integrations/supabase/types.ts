@@ -113,6 +113,57 @@ export type Database = {
           },
         ]
       }
+      blog_posts: {
+        Row: {
+          author: string
+          content: string
+          created_at: string
+          excerpt: string
+          featured_image_url: string | null
+          id: string
+          is_published: boolean
+          keywords: string[]
+          meta_description: string
+          publish_date: string
+          seo_title: string
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string
+          content: string
+          created_at?: string
+          excerpt: string
+          featured_image_url?: string | null
+          id?: string
+          is_published?: boolean
+          keywords?: string[]
+          meta_description: string
+          publish_date: string
+          seo_title: string
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          content?: string
+          created_at?: string
+          excerpt?: string
+          featured_image_url?: string | null
+          id?: string
+          is_published?: boolean
+          keywords?: string[]
+          meta_description?: string
+          publish_date?: string
+          seo_title?: string
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       dismissed_asks: {
         Row: {
           ask_id: string
