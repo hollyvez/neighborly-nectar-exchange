@@ -13,60 +13,76 @@ export const SeedBlogPosts = () => {
     setLoading(true);
     
     try {
-      // Check if posts already exist
-      const { data: existingPosts } = await supabase
-        .from("blog_posts")
-        .select("slug");
+      let updatedCount = 0;
+      let insertedCount = 0;
 
-      const existingSlugs = new Set(existingPosts?.map(p => p.slug) || []);
-      
-      const postsToInsert = blogPosts.filter(post => !existingSlugs.has(post.slug));
+      for (const post of blogPosts) {
+        // Check if post exists
+        const { data: existingPost } = await supabase
+          .from("blog_posts")
+          .select("id")
+          .eq("slug", post.slug)
+          .maybeSingle();
 
-      if (postsToInsert.length === 0) {
-        toast({
-          title: "Posts already seeded",
-          description: "All blog posts already exist in the database.",
-        });
-        setSeeded(true);
-        setLoading(false);
-        return;
+        if (existingPost) {
+          // Update existing post
+          const { error } = await supabase
+            .from("blog_posts")
+            .update({
+              title: post.title,
+              seo_title: post.seo_title,
+              meta_description: post.meta_description,
+              keywords: post.keywords,
+              content: post.content,
+              excerpt: post.excerpt,
+              featured_image_url: post.featured_image_url,
+              author: post.author,
+              publish_date: post.publish_date,
+              is_published: true,
+            })
+            .eq("id", existingPost.id);
+
+          if (error) {
+            console.error("Error updating post:", post.slug, error);
+          } else {
+            updatedCount++;
+          }
+        } else {
+          // Insert new post
+          const { error } = await supabase
+            .from("blog_posts")
+            .insert({
+              slug: post.slug,
+              title: post.title,
+              seo_title: post.seo_title,
+              meta_description: post.meta_description,
+              keywords: post.keywords,
+              content: post.content,
+              excerpt: post.excerpt,
+              featured_image_url: post.featured_image_url,
+              author: post.author,
+              publish_date: post.publish_date,
+              is_published: true,
+            });
+
+          if (error) {
+            console.error("Error inserting post:", post.slug, error);
+          } else {
+            insertedCount++;
+          }
+        }
       }
 
-      const { error } = await supabase
-        .from("blog_posts")
-        .insert(postsToInsert.map(post => ({
-          slug: post.slug,
-          title: post.title,
-          seo_title: post.seo_title,
-          meta_description: post.meta_description,
-          keywords: post.keywords,
-          content: post.content,
-          excerpt: post.excerpt,
-          featured_image_url: post.featured_image_url,
-          author: post.author,
-          publish_date: post.publish_date,
-          is_published: true,
-        })));
-
-      if (error) {
-        console.error("Error seeding posts:", error);
-        toast({
-          title: "Error seeding posts",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Blog posts seeded!",
-          description: `Successfully added ${postsToInsert.length} blog posts.`,
-        });
-        setSeeded(true);
-      }
+      toast({
+        title: "Blog posts synced!",
+        description: `Updated ${updatedCount} posts, inserted ${insertedCount} new posts.`,
+      });
+      setSeeded(true);
     } catch (err) {
       console.error("Error:", err);
       toast({
         title: "Error",
-        description: "Failed to seed blog posts.",
+        description: "Failed to sync blog posts.",
         variant: "destructive",
       });
     }
@@ -78,19 +94,19 @@ export const SeedBlogPosts = () => {
     <div className="fixed bottom-4 right-4 z-50">
       <Button 
         onClick={handleSeed} 
-        disabled={loading || seeded}
+        disabled={loading}
         variant="outline"
         className="bg-background"
       >
         {loading ? (
           <>
             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-            Seeding...
+            Syncing...
           </>
         ) : seeded ? (
-          "Posts Seeded ✓"
+          "Posts Synced ✓"
         ) : (
-          "Seed Blog Posts"
+          "Sync Blog Posts"
         )}
       </Button>
     </div>
