@@ -25,6 +25,7 @@ export const Footer = () => {
             <ul className="space-y-2">
               <li><ContactModal /></li>
               <li><Link to="/faq" className="hover:underline">FAQ</Link></li>
+              <li><Link to="/blog" className="hover:underline">Blog</Link></li>
             </ul>
           </div>
           <div>
